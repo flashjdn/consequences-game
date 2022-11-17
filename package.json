@@ -1,0 +1,23 @@
+{
+  "name": "consequences-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flashjdn/consequences-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flashjdn/consequences-game/issues"
+  },
+  "homepage": "https://github.com/flashjdn/consequences-game#readme",
+  "devDependencies": {
+    "jest": "^29.3.1",
+    "superwstest": "^2.0.3"
+  }
+}
