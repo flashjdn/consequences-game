@@ -1,0 +1,1 @@
+webSocket = new WebSocket("ws://51.141.52.52:1234")
