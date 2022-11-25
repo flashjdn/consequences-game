@@ -3,7 +3,7 @@ const prompt = require("prompt-sync")({ sigint: true });
 
 // create new connection
 var webSocket = new WebSocket("ws://51.141.52.52:1234");
-var gameStarted = false;
+var gameStarted = true;
 
 // New game message
 console.log(`
@@ -23,22 +23,22 @@ webSocket.onmessage = async (event) => {
   // always print the event Message
   console.log(`----------\n${response.Message}`);
 
-  // only run once to setup game
-  if (!gameStarted) {
+  // only run once to setup game at the beginning
+  if (gameStarted) {
     let name = prompt('Enter your name: ');
     let room = prompt('Enter your room code: ');
     webSocket.send(JSON.stringify({"Name": name, "Room": room}));
-    gameStarted = true;
+    gameStarted = false;
     return;
   }
 
-  // ask the question
+  // ask the question until there are no more questions
   if ('Question' in response) {
     answer = prompt(`${response.Question}: `);
     webSocket.send(JSON.stringify({"Answer": answer}));
   }
    
-  // now give use the result when it's ready
+  // give us the result when it's ready
   if ('Results' in response) {
     for (result of response.Results) {
       console.log(`\n== Results ==\n${result}`);
